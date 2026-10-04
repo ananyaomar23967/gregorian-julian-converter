@@ -1,6 +1,6 @@
 {
   "name": "gregorian-julian-converter",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Converts dates between the Julian calendar and the Gregorian calendar, accounting for the 10-day shift introduced in October 1582.",
   "type": "module",
   "main": "src/index.js",
