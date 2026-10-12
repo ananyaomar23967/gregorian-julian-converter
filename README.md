@@ -23,3 +23,10 @@ The conversion is calendrical, not historical. `gregorianToJulian(1582, 10, 10)`
 ## Awkward edge
 
 The leap-day divergence lands on 29 February. For example, the Julian leap day of 29 February 1900 (which exists, because 1900 is a Julian leap year) maps to 13 March 1900 Gregorian (1900 is not a Gregorian leap year, so March 1 is reached before the +13-day shift is applied). This is correct but surprising if you expect the offset to be a constant 13 across the whole of 1900 — it is 13 for January and February, then 13 again from March onward, but the Julian leap day itself pushes into March on the other side.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
